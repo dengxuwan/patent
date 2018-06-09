@@ -1,0 +1,125 @@
+.summary {
+    border-radius: 2px;
+    padding: 0 30px;
+    margin-bottom: 10px;
+}
+.single-list .single {
+    left: 0;
+    top: 0;
+    width: 48px;
+    height: 40px;
+}
+.summary .product-detail {
+    margin-right: 100px;
+}
+.summary .product-detail h1 {
+    color: #404040;
+    font-weight: 600;
+    width: 435px;
+    line-height: 24px;
+    margin-bottom: 15px;
+}
+.summary .product-detail .user span {
+    font-size: 13px;
+    margin-right: 25px;
+    color: #808080;
+    display: block;
+    float: left;
+    margin-bottom: 5px;
+}
+.clearFix {
+    zoom: 1;
+}
+.summary .product-detail .transferee {
+    color: #808080;
+    font-size: 13px;
+    margin-top: 5px;
+    margin-bottom: 20px;
+}
+.summary .product-time {
+    margin-right: 12px;
+    width: 200px;
+    margin-top: 32px;
+}
+.fl {
+    float: left;
+}
+.summary .product-time p {
+    font-size: 14px;
+    color: #404040;
+    margin-bottom: 10px;
+}
+.summary .product-price {
+    font-size: 20px;
+    color: #FB4C1E;
+    padding-top: 41px;
+    margin-right: 58px;
+}
+.summary .product-price span {
+    font-size: 12px;
+}
+.transferee-detail {
+    padding-bottom: 25px;
+}
+.fr {
+    float: right;
+}
+.summary .detail-button {
+    cursor: pointer;
+    margin-bottom: 10px;
+    background: #FFFFFF;
+    color: #404040;
+    border: 1px solid #F0F0F0;
+    border-radius: 3px;
+    width: 110px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    font-size: 13px;
+}
+.summary .detail-button a {
+    color: #404040;
+}
+.summary .attention-button {
+    cursor: pointer;
+    margin-bottom: 10px;
+    background: #FFFFFF;
+    color: #404040;
+    border: 1px solid #F0F0F0;
+    border-radius: 3px;
+    width: 110px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    font-size: 13px;
+}
+.summary .attention-button a {
+    color: #404040;
+}
+.summary .question-button {
+    cursor: pointer;
+    margin-bottom: 10px;
+    color: #fff;
+    background-color: #FF3B30;
+    border-radius: 3px;
+    width: 110px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    font-size: 13px;
+}
+h1 {
+    font-size: 18px;
+}
+.summary .product-detail .ower span {
+    font-size: 13px;
+    margin-right: 8px;
+    color: #494949;
+}
+
+.single {
+    left: 0;
+    top: 0;
+    width: 48px;
+    height: 40px;
+}
