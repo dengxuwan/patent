@@ -529,6 +529,7 @@ patentContract.prototype = {
 		if (!patentInfo) {
 			return new Error("此专利不存在");
 		}
+
 		Blockchain.transfer(patentInfo.author, value);
 		if (!result) {
 			throw new Error("transfer failed.");

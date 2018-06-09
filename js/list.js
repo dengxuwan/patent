@@ -75,3 +75,22 @@ function search(address, keyword) {
         $(".loading").hide()
     });
 }
+
+//打赏
+function toBuy(patentId, amount) {
+    if (curWallet === '') {
+        alert("您必须安装星云钱包插件！");
+        return;
+    }
+    var args = [patentId];
+    defaultOptions.listener = function(data) {
+        $(".dialog").hide(100)
+        alert('购买成功,大约15秒后数据打包写入区块链，请稍后刷新查看');
+        //开启定时任务，获取交易状态
+        // intervalQuery = setInterval(function() {
+        //  funcIntervalQuery();
+        // }, 6000);
+
+    };
+    serialNumber = nebPay.call(config.contractAddr, amount + "", config.transfer, JSON.stringify(args), defaultOptions);
+}

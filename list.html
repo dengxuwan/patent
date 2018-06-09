@@ -220,9 +220,11 @@
                                         <a class="go-detail" href="detail.html?patentId={{value.id}}" target="_blank">查看详细                     
                                         </a>
                                     </p>
-                                    <a href="javascript:void(0)" onclick="questionsto()">
+                                    {{if value.isTrans==true}}
+                                    <a href="javascript:void(0)" onclick="toBuy('{{value.id}}','{{value.price}}')">
                                         <p class="question-button">购买</p>
-                                    </a>                            
+                                    </a>  
+                                    {{/if}}                          
                                 </div>  
                     </div>
     	       </div>

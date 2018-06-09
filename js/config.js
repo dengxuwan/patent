@@ -2,11 +2,12 @@
 
 var config = {
 	chainId: 1,
-	apiPrefix: "https://testnet.nebulas.io", //https://testnet.nebulas.io  https://mainnet.nebulas.io
+	apiPrefix: "https://mainnet.nebulas.io", //https://testnet.nebulas.io  https://mainnet.nebulas.io
 	contractAddr: "n1ynV59YNV6eAs1qpV9qRMsKhrSgeipCAkP", //main n1zsohpv63CnmUs7aeVBfgeQBozpK5bmTMk test n21iah7tXxgxTZ6R81n9UuWGwULcuVansBd
 	myAddress: "n1JeDTMq5xHq6Y16yApYbMdT4Vw4K9kzbK9",
 	gaslimit: 2000000,
 	gasprice: 1000000,
+	transfer: "transfer",
 	addPatent: "addPatent",
 	getIndexData: "getIndexData",
 	getAll: "getAll",
