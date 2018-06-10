@@ -25,7 +25,7 @@ function initInfo(info) {
     $("#no").html(info.no);
     $("#title").html(info.title);
     $("#appDate").html(info.appDate);
-    $("#appName").html(info.appName);
+    $("#appName").html(info.author);
     $("#inventName").html(info.inventName);
     $("#appAddress").html(info.appAddress);
     $("#appPhone").html(info.appPhone);
@@ -38,9 +38,9 @@ function initInfo(info) {
     $("#shuoming").html(info.shuoming);
     $("#power").html(info.power);
     $("#price").html(info.price);
-    $("#pics").html(info.pic);
+    $("#pics").attr("src", info.pic);
     $("#author").html(info.author);
-    if (info.isTrans) {
+    if (info.isTrans === true || info.isTrans === 'true') {
         //说明正在转让
         $("#isTrans").html("转让中");
         $("#price").html(info.price + "nas");

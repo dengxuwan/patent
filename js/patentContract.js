@@ -392,8 +392,8 @@ patentContract.prototype = {
 
 		var from = Blockchain.transaction.from;
 		var time = Blockchain.transaction.timestamp.toString(10);
-		this.patentInfos.set(from + time, args);
-		this.patentInfoKeys.set(this._jSize, from + time);
+		this.patentInfos.set(args.id, args);
+		this.patentInfoKeys.set(this._jSize, args.id);
 		this._jSize++;
 	},
 	// 查询自己发布的列表

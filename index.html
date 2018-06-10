@@ -103,7 +103,7 @@
                  	<img src="./file/index7_06.png" data-bd-imgshare-binded="1"></duv>                
                  	<duv class="dh_4">
                  		<img src="./file/index7_06.png" data-bd-imgshare-binded="1"></duv>              </div>              <div class="dh_right">                
-                 	<span id="seeCount">1000+</span>              
+                 	<span id="seeCount"></span>              
                  	 <p>专利浏览次数</p>              
                  	</div>           
              </li>            
@@ -116,8 +116,8 @@
                    <duv class="dh_2"><img src="./file/index5_03.png" data-bd-imgshare-binded="1"></duv>              
                </div>              
                <div class="dh_right">                
-               	<p><span id="patentCount">100+</span></p>                   
-               	<p>大数量专利总数</p>              
+               	<p><span id="patentCount"></span></p>                   
+               	<p>专利数量总数</p>              
                </div>          
                 </li>            
                <li>              
@@ -139,6 +139,8 @@
        <div class="banner"><canvas width="1920" height="875" style="width: 1536px; height: 700px;"></canvas>
        </div>
         </div>
+    <div class="toptips">提示：本站部分操作需要安装星云钱包插件支持！插件安装请移步至 <a target="_blank" href="https://github.com/ChengOrangeJu/WebExtensionWallet">WebExtensionWallet</a></div>
+
     <div class="pros">
    <div class="pros_a">
       <div class="pros_top">
@@ -256,9 +258,12 @@
 				 				<span>
 								{{if value.isTrans == true}}
 									{{value.price}} Nas
-								{{/if}}
-								{{if value.isTrans == false}}
-									不转让
+								{{else if value.isTrans == false}}
+									非转让
+                {{else if value.isTrans == 'false'}}
+                  非转让
+                {{else if value.isTrans == 'true'}}
+                  {{value.price}} Nas
 								{{/if}}
 								</span>
 				 			</dt>
@@ -403,6 +408,7 @@
         });
     </script>
     <script type="text/javascript" src="./file/three.min.js"></script>   
+        <script type="text/javascript" src="./file/about.js"></script>  
     <script src=js/template-web.js></script>
     <script src=js/nebulas.js></script>
     <script src=js/nebPay.js></script>

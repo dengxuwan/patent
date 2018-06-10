@@ -163,3 +163,22 @@
       transform: translateY(-50%) translateX(-50%)
       
   }
+
+element.style {
+}
+.toptips {
+    width: 800px;
+    margin: 20px auto 5px;
+    border-radius: 100px;
+    background: #E56258;
+    color: #fff;
+    padding: 10px 30px 10px 10px;
+    text-align: center;
+    position: relative;
+    line-height: 20px;
+    font-size: 14px;
+}
+a {
+    color: #337ab7;
+    text-decoration: none;
+}

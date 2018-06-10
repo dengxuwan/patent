@@ -5,3 +5,7 @@ function initBaseData(base) {
 	$("#patentCount").html(base.totalCount + "次");
 	$("#seeCount").html(base.seeCount + "次");
 }
+
+function showtishi() {
+	alert('此功能正在开发中，下一个版本将会上线！')
+}

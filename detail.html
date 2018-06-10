@@ -120,7 +120,7 @@
     							 	  </div>              
     							 	  <div class="dh_right">                
     							 	  	<p>
-    							 	  		<span id="seeCount">1000+</span>
+    							 	  		<span id="seeCount"></span>
     							 	  	</p>               
     							 	  	 <p>专利浏览次数</p>              
     							 	  	</div>           
@@ -138,7 +138,7 @@
     							 	  	  	 </duv>              
     							 	  	  	</div>              
     							 	  	  	<div class="dh_right">                
-    							 	  	  			<p><span id="patentCount">100+</span></p>           
+    							 	  	  			<p><span id="patentCount"></span></p>           
     							 	  	  			 <p>专利数量总数</p>             
     							 	  	  			  </div>          
     							 	  	  			   </li>            
@@ -156,7 +156,7 @@
     							 	  	  			  </div>              
     							 	  	  			      <div class="dh_right">               
     							 	  	  			       <p>
-    							 	  	  			       	<span>1次</span>
+    							 	  	  			       	<span></span>
     							 	  	  			       </p>                
     							 	  	  			       <p> 累计转让次数</p>              
     							 	  	  			   </div>           
@@ -174,7 +174,7 @@
    <div class="pros">
 	   <div class="pros_a">
 	    	<div class="detail_con">
-    <h3 id="title">一种火车轮分体式成形模具</h3>
+    <h3 id="title"></h3>
     <p class="detail_tittle"><span class="hover">专利详情</span><span class="">专利附图</span></p>
     <div class="content" style="display: block;">
         <h2 id="Info" class="TIT">基本信息</h2>
@@ -318,57 +318,6 @@
 
 
     <script src="./file/jquery-1.12.4.min.js"></script>
-
-    <script type="text/javascript" src="./file/modernizr.custom.js"></script>
-    <script type="text/javascript" src="./file/jquery.dlmenu.js"></script>
-    <script type="text/javascript" src="./file/jquery.SuperSlide.2.1.1.js"></script>
-    <script type="text/javascript" src="./file/jquery.jslides.js"></script>
-    <script type="text/javascript" src="./file/jquery.select.js"></script>
-    <script type="text/javascript" src="./file/jquery.roller.js"></script>
-    <script type="text/javascript" src="./file/header3.js"></script>
-    <script type="text/javascript" src="./file/aos.js"></script>
-    <script type="text/javascript">
-
-        $(".top_right_left").click(function () {
-            $(".top_right_left_g").hide();
-        });
-        $(".top_right_left").click(function () {
-            $(".top_right_left_g").show();
-        });
-        $('select.select').select();
-        $(".picScroll").slide({ mainCell: "ul", effect: "top", vis: 6, scroll: 1, autoPage: true, switchLoad: "_src" });
-        $(".slideTxtBox").slide({ delayTime: 1000, });
-        $(".img").mouseenter(function () {
-            var $this = $(this);
-            var $div = $this.find(".inner div");
-            $div.eq(1).stop();
-            $div.eq(1).css({ "top": "0px", "left": "0px", "width": "530px", "height": "396px" });
-            $div.eq(0).stop().animate({ "top": "-10px", "left": "-10px", "width": "550px", "height": "416px", "opacity": "1" }, 500);
-            $div.eq(1).stop().animate({ "top": "-10px", "left": "-10px", "width": "550px", "height": "416px", "opacity": "1" }, 500);
-        }).mouseleave(function () {
-            var $this = $(this);
-            var $div = $this.find(".inner div");
-            $div.eq(0).stop().animate({ "top": "0", "left": "0", "width": "530px", "height": "396px", "opacity": "1" }, 500);
-            $div.eq(1).stop().animate({ "top": "0", "left": "0", "width": "530px", "height": "396px", "opacity": "1" }, 500);
-        });
-        $(".slideTxtBoxy").slide();
-        $(".foot_eh_u").click(function () {
-            $(".foot_eh_j").css("height", "auto");
-        });
-        $(".foot_eh").mouseleave(function () {
-            $(".foot_eh_j").css("height", "26px");
-        });
-        $(".scrollBt").slide({ titCell: ".scrollBt.list li", mainCell: ".piclistaa", autoPage: true, effect: "leftLoop", autoPlay: true, vis: 1, trigger: "click" });
-        AOS.init({
-            easing: 'ease-out-back',
-            duration: 1000
-        });
-        $('.hero__scroll').on('click', function (e) {
-            $('html, body').animate({
-                scrollTop: $(window).height()
-            }, 1200);
-        });
-    </script>
     <script type="text/javascript" src="./file/three.min.js"></script>
     <script type="text/javascript" src="./file/about.js"></script>
     <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>

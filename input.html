@@ -10,6 +10,7 @@
 	<link rel="icon" href="images/logo.ico">
 <link rel="stylesheet" type="text/css" href="./file/base.css">
 <link rel="stylesheet" type="text/css" href="./file/aos.css">
+<link rel="stylesheet" type="text/css" href="./css/common.css">
 <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
 </head>
 <body aos-easing="ease-out-back" aos-duration="1000" aos-delay="0">
@@ -85,61 +86,15 @@
     			<div class="dh aos-init aos-animate" aos="fade-up">         
     				<ul>           
     					<li>              
-    						<div class="dh_left">                
-    							<div class="dh_p">
-    								<img src="./file/index6_03.png" data-bd-imgshare-binded="1"></div>               
-    								 <duv class="dh_1">
-    									<img src="./file/index5_1_03.png" data-bd-imgshare-binded="1"></duv>                <duv class="dh_2">
-    										<img src="./file/index5_03.png" data-bd-imgshare-binded="1"></duv>              </div>             
-    									 <div class="dh_right">                
-    									 	<p><span>去中心化的数据库</span></p>               
-    									 	 <p>nas区块链数据存储解决方案</p>              
-    									 </div>           
+    						          
     									</li>            
     									<li>              
-    									 	<div class="dh_left">               
-    									 	 <div class="dh_p">
-    									 	 	<img src="./file/index8_03.png" data-bd-imgshare-binded="1">
-    									 	 </div>                
-    									 	 <duv class="dh_3">
-    									 	 	<img src="./file/index7_06.png" data-bd-imgshare-binded="1">
-    									 	 </duv>                
-    									 	 	<duv class="dh_4">
-    									 	 		<img src="./file/index7_06.png" data-bd-imgshare-binded="1">
-    									 	 	</duv>              
-    									 	 	</div>             
-    									 	 		 <div class="dh_right">                
-    									 	 		 	<p><span>1000+</span></p>               
-    									 	 		 	 <p>专利浏览次数</p>             
-    									 	 		 	  </div>           
+    									 	         
     									 	 		 	</li>           
     									 	 		 <li>              
-    									 	 		 	<div class="dh_left">                
-    									 	 		 		<div class="dh_p"><img src="./file/index9_03.png" data-bd-imgshare-binded="1"></div>                
-    									 	 		 	<duv class="dh_1"><img src="./file/index5_1_03.png" data-bd-imgshare-binded="1"></duv>               
-    									 	 		 	 <duv class="dh_2"><img src="./file/index5_03.png" data-bd-imgshare-binded="1"></duv>              
-    									 	 		 	</div>             
-    									 	 		 	 <div class="dh_right">                
-    									 	 		 	 	<p><span>100+</span>
-    									 	 		 	</p>                
-    									 	 		 	<p>大数量专利总数</p>             
-    									 	 		 	 </div>           
+    									 	 		 	       
     									 	 		 	</li>            
-    									 	 		 	 <li>              
-    									 	 		 	 	<div class="dh_left">                
-    									 	 		 	 	<div class="dh_p">
-    									 	 		 	 	<img src="./file/index10_03.png" data-bd-imgshare-binded="1"></div>                
-    									 	 		 	 	<duv class="dh_5">
-    									 	 		 	 		<img src="./file/index12_03.png" data-bd-imgshare-binded="1"></duv>                
-    									 	 		 	 		<duv class="dh_6">
-    									 	 		 	 			<img src="./file/index12_06.png" data-bd-imgshare-binded="1">
-    									 	 		 	 		</duv>             
-    									 	 		 	 			 
-    									 	 		 	 		</div>             
-    									 	 		 	 			 <div class="dh_right">                
-    									 	 		 	 			 	<p><span>5次</span></p>                
-    									 	 		 	 			 	<p> 累计转让次数</p>             
-    									 	 		 	 			 	 </div>         
+    									 	 		 	
     									 	 		 	 			 	   </li>       
     									 	 		 	 			 	    </ul>     
     									 	 		 	 			 	      </div>   
@@ -148,6 +103,7 @@
     									 	 		 	 			 	        </div> 
     									 	 		 	 			 	        <div class="banner"><canvas width="1920" height="875" style="width: 1536px; height: 700px;"></canvas></div> </div>
     
+     <div class="toptips">提示：此页面操作需要安装星云钱包插件支持！插件安装请移步至 <a target="_blank" href="https://github.com/ChengOrangeJu/WebExtensionWallet">WebExtensionWallet</a></div>
    <div class="pros">
 	   <div class="pros_a">
 	    <div class="release-right-content" style="margin: 0 auto;">
@@ -241,7 +197,7 @@
 							
 						   </el-form-item>
 					</el-col>
-					<el-col :span="24">
+					<el-col :span="12">
 						  <el-form-item label="是否转让" prop="isTrans" :label-width="labelWidth">
 							  <el-switch
 							    v-model="ruleForm.isTrans"
@@ -258,6 +214,11 @@
 								    <el-input v-model="ruleForm.price" placeholder="单位为Nas"></el-input>
 							   </el-form-item>
 							</div>
+					</el-col>
+					<el-col :span="24">
+						  <el-form-item  label="专利图片" prop="pic" :label-width="labelWidth">
+								    <el-input v-model="ruleForm.pic" placeholder="图片链接地址"></el-input>
+							   </el-form-item>
 					</el-col>
 					<el-col :span="24">
 						  <el-form-item label="摘要" prop="description" :label-width="labelWidth">
@@ -346,15 +307,6 @@
 </div>
     <script src="./file/jquery-1.12.4.min.js"></script>
 
-    <script type="text/javascript" src="./file/modernizr.custom.js"></script>
-    <script type="text/javascript" src="./file/jquery.dlmenu.js"></script>
-    <script type="text/javascript" src="./file/jquery.SuperSlide.2.1.1.js"></script>
-    <script type="text/javascript" src="./file/jquery.jslides.js"></script>
-    <script type="text/javascript" src="./file/jquery.select.js"></script>
-    <script type="text/javascript" src="./file/jquery.roller.js"></script>
-    <script type="text/javascript" src="./file/header3.js"></script>
-    <script type="text/javascript" src="./file/aos.js"></script>
-
 
     <script type="text/javascript">
 		function toSearch() {
@@ -362,45 +314,7 @@
 		    window.location.href = "list.html?keyword=" + keyword;
 		}
 	
-        $(".top_right_left").click(function () {
-            $(".top_right_left_g").hide();
-        });
-        $(".top_right_left").click(function () {
-            $(".top_right_left_g").show();
-        });
-        $('select.select').select();
-        $(".picScroll").slide({ mainCell: "ul", effect: "top", vis: 6, scroll: 1, autoPage: true, switchLoad: "_src" });
-        $(".slideTxtBox").slide({ delayTime: 1000, });
-        $(".img").mouseenter(function () {
-            var $this = $(this);
-            var $div = $this.find(".inner div");
-            $div.eq(1).stop();
-            $div.eq(1).css({ "top": "0px", "left": "0px", "width": "530px", "height": "396px" });
-            $div.eq(0).stop().animate({ "top": "-10px", "left": "-10px", "width": "550px", "height": "416px", "opacity": "1" }, 500);
-            $div.eq(1).stop().animate({ "top": "-10px", "left": "-10px", "width": "550px", "height": "416px", "opacity": "1" }, 500);
-        }).mouseleave(function () {
-            var $this = $(this);
-            var $div = $this.find(".inner div");
-            $div.eq(0).stop().animate({ "top": "0", "left": "0", "width": "530px", "height": "396px", "opacity": "1" }, 500);
-            $div.eq(1).stop().animate({ "top": "0", "left": "0", "width": "530px", "height": "396px", "opacity": "1" }, 500);
-        });
-        $(".slideTxtBoxy").slide();
-        $(".foot_eh_u").click(function () {
-            $(".foot_eh_j").css("height", "auto");
-        });
-        $(".foot_eh").mouseleave(function () {
-            $(".foot_eh_j").css("height", "26px");
-        });
-        $(".scrollBt").slide({ titCell: ".scrollBt.list li", mainCell: ".piclistaa", autoPage: true, effect: "leftLoop", autoPlay: true, vis: 1, trigger: "click" });
-        AOS.init({
-            easing: 'ease-out-back',
-            duration: 1000
-        });
-        $('.hero__scroll').on('click', function (e) {
-            $('html, body').animate({
-                scrollTop: $(window).height()
-            }, 1200);
-        });
+        
     </script>
     <script type="text/javascript" src="./file/three.min.js"></script>
     <script type="text/javascript" src="./file/about.js"></script>
@@ -408,6 +322,7 @@
       <!-- <script type="text/javascript" src="./js/element.js"></script> -->
       <!-- 先引入 Vue -->
   <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script src=js/template-web.js></script>
   <!-- 引入组件库 -->
   <script src="https://unpkg.com/element-ui/lib/index.js"></script>
     <script src=js/nebulas.js></script>
@@ -545,7 +460,10 @@
         		power:'',// 权利再要
         		shuoming:'',// 说明书再要
         		isTrans:true, // 是否转让
-        		appPhone:'' //发明人联系方式
+        		appPhone:'', //发明人联系方式
+        		isBuy:false,
+        		from:'',
+        		pic:''
         	}
         }
       },

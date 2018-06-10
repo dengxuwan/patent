@@ -12,10 +12,7 @@
 	<link rel="stylesheet" type="text/css" href="./file/base.css">
     <link rel="stylesheet" type="text/css" href="./css/common.css">
     <link rel="stylesheet" type="text/css" href="./css/list.css">
-	<link rel="stylesheet" type="text/css" href="./file/aos.css">
-	<link rel="stylesheet" href="./file/share_style1_16.css">
-	<link rel="stylesheet" href="./file/share_popup.css">
-	<link rel="stylesheet" href="./file/select_share.css">
+
 </head>
 <body aos-easing="ease-out-back" aos-duration="1000" aos-delay="0">
     <div class="top">
@@ -123,7 +120,7 @@
     							 	  </div>              
     							 	  <div class="dh_right">                
     							 	  	<p>
-    							 	  		<span id="seeCount">1000+</span>
+    							 	  		<span id="seeCount"></span>
     							 	  	</p>               
     							 	  	 <p>专利浏览次数</p>              
     							 	  	</div>           
@@ -141,7 +138,7 @@
     							 	  	  	 </duv>              
     							 	  	  	</div>              
     							 	  	  	<div class="dh_right">                
-    							 	  	  			<p><span id="patentCount">100+</span></p>               
+    							 	  	  			<p><span id="patentCount"></span></p>               
     							 	  	  			 <p>专利数量总数</p>             
     							 	  	  			  </div>          
     							 	  	  			   </li>            
@@ -159,7 +156,7 @@
     							 	  	  			  </div>              
     							 	  	  			      <div class="dh_right">               
     							 	  	  			       <p>
-    							 	  	  			       	<span>1次</span>
+    							 	  	  			       	<span></span>
     							 	  	  			       </p>                
     							 	  	  			       <p> 累计转让次数</p>              
     							 	  	  			   </div>           
@@ -189,7 +186,7 @@
                                     </p>
                                     <p class="ower clearFix">
                                         <span class="name">
-                                            专利权人： <a href="/Shop/43.html"><span>{{value.appName}}</span></a>
+                                            专利权人： <a href="/Shop/43.html"><span>{{value.inventName}}</span></a>
                                         </span>
                                                                 </p>
                                   <div class="transferee">                            
@@ -206,12 +203,11 @@
                                     </p>
                                 </div>
                                 <div class="product-price fl" style="margin-right: 10px;">                      
-                                    {{if value.isTrans==true}}
+                                    {{if value.isTrans=='true' || value.isTrans==true}}
                                      售价：
-                                        {{value.price}}<span> nas</span>
-                                    {{/if}}
-                                     {{if value.isTrans == false}}
-                                       <span> &nbsp;&nbsp;不转让</span>
+                                        {{value.price}}nas
+                                     {{else if value.isTrans == false || value.isTrans=='false'}}
+                                        &nbsp;&nbsp;不转让
                                       {{/if}}
                                     
                                 </div>  
@@ -220,7 +216,7 @@
                                         <a class="go-detail" href="detail.html?patentId={{value.id}}" target="_blank">查看详细                     
                                         </a>
                                     </p>
-                                    {{if value.isTrans==true}}
+                                    {{if value.isTrans==true || value.isTrans=='true'}}
                                     <a href="javascript:void(0)" onclick="toBuy('{{value.id}}','{{value.price}}')">
                                         <p class="question-button">购买</p>
                                     </a>  
@@ -242,20 +238,6 @@
 		</p>
 	</div>
 </div>
-<div class="foot">
-	<div class="foot_a">
-		<div class="foot_top">
-			
-			<div class="foot_top_center">
-				Copyright © 2018.基于 NAS公链开发的专利备案平台
-			</div>
-			<div class="foot_top_center">
-				联系方式:363669440@qq.com
-			</div>
-		</div>
-	</div>
-</div>
-
 <div class="kdf">
 	<div class="kdf_b">
 		<p>
@@ -296,65 +278,23 @@
         </div>
     </div>
 
-    <script src="./file/jquery-1.12.4.min.js"></script>
-    <script type="text/javascript" src="./file/modernizr.custom.js"></script>
-    <script type="text/javascript" src="./file/jquery.dlmenu.js"></script>
-    <script type="text/javascript" src="./file/jquery.SuperSlide.2.1.1.js"></script>
-    <script type="text/javascript" src="./file/jquery.jslides.js"></script>
-    <script type="text/javascript" src="./file/jquery.select.js"></script>
-    <script type="text/javascript" src="./file/jquery.roller.js"></script>
-    <script type="text/javascript" src="./file/header3.js"></script>
-    <script type="text/javascript" src="./file/aos.js"></script>
-    <script type="text/javascript">
-        $('#Query').submit(function () {
-            var fwCode = $('#text').val();
-            if (/^[0-9]{12,20}$/.test(fwCode)) {
-                return true;
-            }
-            alert('防伪码输入错误,请更正!\n(防伪码为十二位至二十位阿拉伯数字组成)');
-            return false;
-        });
+<div class="foot">
+    <div class="foot_a">
+        <div class="foot_top">
+            
+            <div class="foot_top_center">
+                Copyright © 2018.基于 NAS公链开发的专利备案平台
+            </div>
+            <div class="foot_top_center">
+                联系方式:363669440@qq.com
+            </div>
+        </div>
+    </div>
+</div>
 
-        $(".top_right_left").click(function () {
-            $(".top_right_left_g").hide();
-        });
-        $(".top_right_left").click(function () {
-            $(".top_right_left_g").show();
-        });
-        $('select.select').select();
-        $(".picScroll").slide({ mainCell: "ul", effect: "top", vis: 6, scroll: 1, autoPage: true, switchLoad: "_src" });
-        $(".slideTxtBox").slide({ delayTime: 1000, });
-        $(".img").mouseenter(function () {
-            var $this = $(this);
-            var $div = $this.find(".inner div");
-            $div.eq(1).stop();
-            $div.eq(1).css({ "top": "0px", "left": "0px", "width": "530px", "height": "396px" });
-            $div.eq(0).stop().animate({ "top": "-10px", "left": "-10px", "width": "550px", "height": "416px", "opacity": "1" }, 500);
-            $div.eq(1).stop().animate({ "top": "-10px", "left": "-10px", "width": "550px", "height": "416px", "opacity": "1" }, 500);
-        }).mouseleave(function () {
-            var $this = $(this);
-            var $div = $this.find(".inner div");
-            $div.eq(0).stop().animate({ "top": "0", "left": "0", "width": "530px", "height": "396px", "opacity": "1" }, 500);
-            $div.eq(1).stop().animate({ "top": "0", "left": "0", "width": "530px", "height": "396px", "opacity": "1" }, 500);
-        });
-        $(".slideTxtBoxy").slide();
-        $(".foot_eh_u").click(function () {
-            $(".foot_eh_j").css("height", "auto");
-        });
-        $(".foot_eh").mouseleave(function () {
-            $(".foot_eh_j").css("height", "26px");
-        });
-        $(".scrollBt").slide({ titCell: ".scrollBt.list li", mainCell: ".piclistaa", autoPage: true, effect: "leftLoop", autoPlay: true, vis: 1, trigger: "click" });
-        AOS.init({
-            easing: 'ease-out-back',
-            duration: 1000
-        });
-        $('.hero__scroll').on('click', function (e) {
-            $('html, body').animate({
-                scrollTop: $(window).height()
-            }, 1200);
-        });
-    </script>
+
+    <script src="./file/jquery-1.12.4.min.js"></script>
+
     <script type="text/javascript" src="./file/three.min.js"></script>
     <script type="text/javascript" src="./file/about.js"></script>
     <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
