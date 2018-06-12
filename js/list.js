@@ -76,7 +76,7 @@ function search(address, keyword) {
     });
 }
 
-//打赏
+//购买
 function toBuy(patentId, amount) {
     if (curWallet === '') {
         alert("您必须安装星云钱包插件！");

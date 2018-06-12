@@ -241,7 +241,8 @@
 						  </div>
 						<el-dialog title="备案成功" :visible="dialogFormVisible" @open="openDialog()">
 						  <div >
-						  	<div>温馨提示: 您的专利已经备案成功，专利编号为<span id="patentNo" style="color:red">5414654111</span>,数据写入区块链中需要15秒左右.<br>所以请耐心等待，15秒后刷新查看，下图二维码为您的专利详情页面，可以将次二维码出示给第三方进行展示！</div>
+						  	<div>温馨提示: 您的专利已经备案成功，专利编号为<span id="patentNo" style="color:red">5414654111</span>,数据写入区块链中需要15秒左右.<br>所以请耐心等待，15秒后刷新查看，下图二维码为您的专利详情页面，可以将次二维码出示给第三方进行展示！
+						  	注意：二维码估计15秒后才能生效！</div>
 						 	<div id="showCode" style="margin-top:20px"></div>
 						  </div>
 						  <div slot="footer" class="dialog-footer">
@@ -403,6 +404,9 @@
 			          title: [
 			            { trigger: 'change',required: true, message : "请填写专利标题"}
 			          ],
+			          appDate: [
+			            { trigger: 'change',required: true, message : "请填写申请日期"}
+			          ],
 			          appName: [
 			            { trigger: 'change',required: true, message : "请填写申请人"}
 			          ],
@@ -511,7 +515,7 @@
 			};
 			
 			nebPay.call(config.contractAddr, "0", config.addPatent, JSON.stringify(args), defaultOptions);
-			console.log("交易号为" + serialNumber, "发表评论交易hash")
+			console.log("交易号为" + serialNumber, "发表专利交易hash")
 		},
 		openDialog : function(){
 			var urlStr = window.location.href;
@@ -521,7 +525,7 @@
 				var url = urls + "detail.html?patentId=" + vue.patentId;
 				$("#patentNo").html(vue.patentId);
 				$("#showCode").html('');
-		        new QRCode(document.getElementById("showCode"), "url");
+		        new QRCode(document.getElementById("showCode"), url);
 		    }, 1000);
 			
 		},

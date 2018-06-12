@@ -25,7 +25,7 @@ function initInfo(info) {
     $("#no").html(info.no);
     $("#title").html(info.title);
     $("#appDate").html(info.appDate);
-    $("#appName").html(info.author);
+
     $("#inventName").html(info.inventName);
     $("#appAddress").html(info.appAddress);
     $("#appPhone").html(info.appPhone);
@@ -39,7 +39,14 @@ function initInfo(info) {
     $("#power").html(info.power);
     $("#price").html(info.price);
     $("#pics").attr("src", info.pic);
-    $("#author").html(info.author);
+
+    if (info.isBuy === 'true' || info.isBuy === true) {
+        $("#author").html(info.author + "(购买者)");
+        $("#appName").html(info.from);
+    } else {
+        $("#appName").html(info.author);
+        $("#author").html(info.author + "(申请人)");
+    }
     if (info.isTrans === true || info.isTrans === 'true') {
         //说明正在转让
         $("#isTrans").html("转让中");

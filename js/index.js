@@ -39,7 +39,7 @@ function getWallectInfo() {
 }
 
 $(function() {
-    $(".loading").show();
+    // $(".loading").show();
     getWallectInfo();
 })
 

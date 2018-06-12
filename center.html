@@ -155,8 +155,8 @@
                                 <th>是否转让</th>
                                 <th>转让价格</th>
                                 <th>评论人数</th>
-                                <th>申请时间</th>
-                                <th>操作</th>
+                                <th>来源</th>
+<!--                                 <th>操作</th> -->
                             </tr>
                         </thead>
                         <tbody id="patentBody">
@@ -168,8 +168,14 @@
                                         <td>{{value.isTrans?'是':'否'}}</td>
                                         <td>{{value.isTrans?value.price+'nas':'不转让'}}</td>
                                         <td>{{value.comments.length}}人</td>
-                                        <td>{{value.appDate}}</td>
-                                        <td><a class="success">转让</a></td>
+                                        <td>
+                                            {{if value.isBuy=='true' || value.isBuy ==true}}
+                                                购买所得
+                                            {{else}}
+                                                申请所得
+                                            {{/if}}
+                                        </td>   
+                                       
                                     </tr>
                                 {{/each}}
                             </script>

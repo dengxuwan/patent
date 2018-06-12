@@ -73,7 +73,7 @@ var PatentInfo = function(obj) {
 		this.price = obj.price; //价格
 		this.createDate = obj.createDate; // 创建时间
 		this.pic = obj.pic;
-		this.isTrans = obj.isTrans; // 是否转让 0 否  1是
+		this.isTrans = obj.isTrans; // 是否转让 
 		this.isBuy = obj.isBuy; //是否购买过来 的
 		this.comments = obj.comments;
 	} else {
@@ -178,8 +178,8 @@ var patentContract = function() {
 		_fee: new BigNumber(0.01),
 		_wei: 1000000000000000000,
 		_jSize: 0,
-		_seeCount: 0, // 总浏览数
-		transfers: [],
+		seeCount: 0, // 总浏览数
+		transfers: []
 	});
 	// 定义全局的map变量
 	LocalContractStorage.defineMapProperties(this, {
@@ -215,6 +215,7 @@ patentContract.prototype = {
 		this._fee = new BigNumber(0.01); // 手续费
 		this._wei = 1000000000000000000; // 单位
 		this._jSize = 0;
+		this.seeCount = 0;
 		this.transfers = [];
 		var time = Blockchain.transaction.timestamp.toString(10);
 		var id = "one";
@@ -388,10 +389,14 @@ patentContract.prototype = {
 	},
 	//添加专利
 	addPatent: function(arg) {
-		var args = new PatentInfo(arg);
-
-		var from = Blockchain.transaction.from;
 		var time = Blockchain.transaction.timestamp.toString(10);
+		var args = new PatentInfo(arg);
+		args.comments = [];
+		args.isBuy = false;
+		args.from = '';
+		args.createDate = time;
+		var from = Blockchain.transaction.from;
+
 		this.patentInfos.set(args.id, args);
 		this.patentInfoKeys.set(this._jSize, args.id);
 		this._jSize++;
@@ -460,7 +465,7 @@ patentContract.prototype = {
 	//获取专利详情
 	getPatentInfo: function(patentInfoId) {
 		var obj = {};
-		this._seeCount++;
+		this.seeCount++;
 		var patentInfo = this.patentInfos.get(patentInfoId);
 		if (!patentInfo) {
 			throw new Error('此专利不存在!');
@@ -497,7 +502,6 @@ patentContract.prototype = {
 		obj['list'] = list;
 		var base = this.getIndexData(false);
 		obj['base'] = base;
-
 		return obj;
 	},
 	//主页需要的数据
@@ -505,7 +509,7 @@ patentContract.prototype = {
 		var obj = {};
 		var list = [];
 		obj['totalCount'] = this._jSize;
-		obj['seeCount'] = this._seeCount; // 总浏览数
+		obj['seeCount'] = this.seeCount; // 总浏览数
 		if (isIndex) {
 			for (var i = 0; i < 3; i++) {
 				var key = this.patentInfoKeys.get(i);
@@ -515,25 +519,29 @@ patentContract.prototype = {
 					list.push(patentInfo);
 				}
 			}
+			obj['data'] = list;
 		}
-		obj['transCount'] = 0;
-		obj['data'] = list;
+		obj['transCount'] = this.transfers.length;
 		return obj;
 	},
 	//转让专利
 	transfer: function(patentId) {
 		var from = Blockchain.transaction.from;
 		var time = Blockchain.transaction.timestamp.toString(10);
-		var value = Blockchain.transaction.value.div(this._wei);
+
 		var patentInfo = this.patentInfos.get(patentId);
 		if (!patentInfo) {
-			return new Error("此专利不存在");
+			return new Error("patentInfo is not exitst");
 		}
-
-		Blockchain.transfer(patentInfo.author, value);
+		var value = Blockchain.transaction.value.div(this._wei);
+		// if (!value.eq(new BigNumber(patentInfo.price))) {
+		// 	return new Error("the amount is error");
+		// }
+		var result = Blockchain.transfer(patentInfo.author, Blockchain.transaction.value);
 		if (!result) {
 			throw new Error("transfer failed.");
 		}
+
 		patentInfo.transfer(from);
 		this.patentInfos.set(patentId, patentInfo);
 		var record = new TransferRecord({

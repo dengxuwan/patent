@@ -186,9 +186,9 @@
                                     </p>
                                     <p class="ower clearFix">
                                         <span class="name">
-                                            专利权人： <a href="/Shop/43.html"><span>{{value.inventName}}</span></a>
+                                            专利权人： <a><span>{{value.inventName}}</span></a>
                                         </span>
-                                                                </p>
+                                    </p>
                                   <div class="transferee">                            
                                         <span>受让方：</span>
                                         <span class="name">个人</span>                            
@@ -202,8 +202,10 @@
                                         <span>主分类号：</span>{{value.mainTypeNo}}                       
                                     </p>
                                 </div>
-                                <div class="product-price fl" style="margin-right: 10px;">                      
-                                    {{if value.isTrans=='true' || value.isTrans==true}}
+                                <div class="product-price fl" style="margin-right: 10px;"> 
+                                    {{if value.isBuy==true || value.isBuy=='true'}}
+                                        已转让                     
+                                    {{else if value.isTrans=='true' || value.isTrans==true}}
                                      售价：
                                         {{value.price}}nas
                                      {{else if value.isTrans == false || value.isTrans=='false'}}
