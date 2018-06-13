@@ -522,7 +522,7 @@
 
 			setTimeout(() => {
 		        var urls = urlStr.substring(0,urlStr.lastIndexOf("/"));
-				var url = urls + "detail.html?patentId=" + vue.patentId;
+				var url = urls + "/detail.html?patentId=" + vue.patentId;
 				$("#patentNo").html(vue.patentId);
 				$("#showCode").html('');
 		        new QRCode(document.getElementById("showCode"), url);
