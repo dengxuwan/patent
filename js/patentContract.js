@@ -32,6 +32,7 @@ var TransferRecord = function(obj) {
 		this.to = obj.to;
 		this.price = obj.price;
 		this.time = obj.time;
+		this.no = obj.no;
 	} else {
 		this.patentId = "";
 		this.title = "";
@@ -39,6 +40,7 @@ var TransferRecord = function(obj) {
 		this.to = "";
 		this.price = "";
 		this.time = "";
+		this.no = "";
 	}
 };
 TransferRecord.prototype = {
@@ -178,8 +180,8 @@ var patentContract = function() {
 		_fee: new BigNumber(0.01),
 		_wei: 1000000000000000000,
 		_jSize: 0,
-		seeCount: 0, // 总浏览数
-		transfers: []
+		_transSize: 0,
+		_seeCount: 0 // 总浏览数
 	});
 	// 定义全局的map变量
 	LocalContractStorage.defineMapProperties(this, {
@@ -206,6 +208,22 @@ var patentContract = function() {
 			stringify: function(o) {
 				return o.toString();
 			}
+		},
+		"transfers": {
+			parse: function(value) {
+				return new TransferRecord(value);
+			},
+			stringify: function(o) {
+				return o.toString();
+			}
+		},
+		"transferKeys": {
+			parse: function(value) {
+				return value.toString();
+			},
+			stringify: function(o) {
+				return o.toString();
+			}
 		}
 	});
 };
@@ -215,8 +233,8 @@ patentContract.prototype = {
 		this._fee = new BigNumber(0.01); // 手续费
 		this._wei = 1000000000000000000; // 单位
 		this._jSize = 0;
-		this.seeCount = 0;
-		this.transfers = [];
+		this._seeCount = 0;
+		this._transSize=0;
 		var time = Blockchain.transaction.timestamp.toString(10);
 		var id = "one";
 		var patentInfo = new PatentInfo({
@@ -241,7 +259,7 @@ patentContract.prototype = {
 			price: "0.0001", //价格
 			createDate: time, // 创建时间
 			pic: "http://www.jszyfw.com//upload//53774A452908698C7DEF263//20180606170839566.jpg",
-			isTrans: false, // 是否转让 0 否  1是
+			isTrans: true, // 是否转让 
 			isBuy: false, //是否购买过来 的
 			comments: []
 		});
@@ -419,8 +437,9 @@ patentContract.prototype = {
 	_getGoodList: function() {
 		var from = Blockchain.transaction.from;
 		var list = [];
-		for (var i = 0; i < this.transfers.length; i++) {
-			var tansfer = this.transfers[i];
+		for (var i = 0; i < this._transSize; i++) {
+			var key = this.transferKeys.get(i);
+			var transfer = this.transfers.get(key);
 			if (transfer.to === from) {
 				list.push(transfer);
 			}
@@ -465,7 +484,6 @@ patentContract.prototype = {
 	//获取专利详情
 	getPatentInfo: function(patentInfoId) {
 		var obj = {};
-		this.seeCount++;
 		var patentInfo = this.patentInfos.get(patentInfoId);
 		if (!patentInfo) {
 			throw new Error('此专利不存在!');
@@ -473,6 +491,7 @@ patentContract.prototype = {
 		patentInfo['id'] = patentInfoId;
 
 		obj['patentInfo'] = patentInfo;
+		this._seeCount += 1;
 		var base = this.getIndexData(false);
 		obj['base'] = base;
 		return obj;
@@ -509,7 +528,7 @@ patentContract.prototype = {
 		var obj = {};
 		var list = [];
 		obj['totalCount'] = this._jSize;
-		obj['seeCount'] = this.seeCount; // 总浏览数
+		obj['seeCount'] = this._seeCount; // 总浏览数
 		if (isIndex) {
 			for (var i = 0; i < 3; i++) {
 				var key = this.patentInfoKeys.get(i);
@@ -521,7 +540,7 @@ patentContract.prototype = {
 			}
 			obj['data'] = list;
 		}
-		obj['transCount'] = this.transfers.length;
+		obj['transCount'] = this._transSize;
 		return obj;
 	},
 	//转让专利
@@ -541,19 +560,36 @@ patentContract.prototype = {
 		if (!result) {
 			throw new Error("transfer failed.");
 		}
-
-		patentInfo.transfer(from);
-		this.patentInfos.set(patentId, patentInfo);
+		
 		var record = new TransferRecord({
 			patentId: patentId,
 			title: patentInfo.title,
+			no: patentInfo.no,
 			from: patentInfo.author,
 			to: from,
 			price: value,
 			time: time
 		});
-		this.transfers.push(record);
+		patentInfo.transfer(from);
+		this.patentInfos.set(patentId, patentInfo);
+
+		var id = time + from;
+		this.transferKeys.set(this._transSize,id);
+		this.transfers.set(id,record);
+		this._transSize += 1;
 		return "success";
+	},
+	getTransferList : function(){
+		var result = {};
+		result["base"] = this.getIndexData(false);
+		var list =[];
+		for(var i=0;i<this._transSize;i++){
+			var key = this.transferKeys.get(i);
+			var transfer = this.transfers.get(key);
+			list.push(transfer);
+		}
+		result["list"] = list.reverse();
+		return result;
 	}
 };
 module.exports = patentContract;

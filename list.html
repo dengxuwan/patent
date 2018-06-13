@@ -39,7 +39,7 @@
                 </li>
                 <li>
                     <p>
-                           <a href="javascript:showtishi()">专利转让</a> 
+                      <a href="transfer.html">转让记录</a> 
                     </p>
                 </li>
                 <li>
@@ -204,7 +204,7 @@
                                 </div>
                                 <div class="product-price fl" style="margin-right: 10px;"> 
                                     {{if value.isBuy==true || value.isBuy=='true'}}
-                                        已转让                     
+                                        已转出                     
                                     {{else if value.isTrans=='true' || value.isTrans==true}}
                                      售价：
                                         {{value.price}}nas
@@ -218,7 +218,7 @@
                                         <a class="go-detail" href="detail.html?patentId={{value.id}}" target="_blank">查看详细                     
                                         </a>
                                     </p>
-                                    {{if value.isTrans==true || value.isTrans=='true'}}
+                                    {{if (value.isTrans==true || value.isTrans=='true') && value.author!=value.current}}
                                     <a href="javascript:void(0)" onclick="toBuy('{{value.id}}','{{value.price}}')">
                                         <p class="question-button">购买</p>
                                     </a>  

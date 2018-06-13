@@ -3,7 +3,7 @@
 var config = {
 	chainId: 1,
 	apiPrefix: "https://testnet.nebulas.io", //https://testnet.nebulas.io  https://mainnet.nebulas.io
-	contractAddr: "n1jRXix5q6CVEc5nhLMXBgNgNeL6kE42nww", //main n1zsohpv63CnmUs7aeVBfgeQBozpK5bmTMk test n21iah7tXxgxTZ6R81n9UuWGwULcuVansBd
+	contractAddr: "n1sqMRo4Bon5Fcx1cSuiMYdRoci326m6M99", //main n1zsohpv63CnmUs7aeVBfgeQBozpK5bmTMk test n21iah7tXxgxTZ6R81n9UuWGwULcuVansBd
 	myAddress: "n1JeDTMq5xHq6Y16yApYbMdT4Vw4K9kzbK9",
 	gaslimit: 2000000,
 	gasprice: 1000000,
@@ -13,6 +13,7 @@ var config = {
 	getAll: "getAll",
 	comment: "comment", //添加评论
 	getPatentInfo: "getPatentInfo",
+	getTransferList: "getTransferList",
 	personal: "personal",
 	search: "search",
 	checkTxhash: "https://explorer.nebulas.io/#/tx/"
