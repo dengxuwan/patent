@@ -47,5 +47,5 @@ function queryCenterInfo() {
 
 function toSearch() {
 	var keyword = $("#keyword").val();
-	window.location.href = "index.html?keyword=" + keyword;
+	window.location.href = "list.html?keyword=" + keyword;
 }
