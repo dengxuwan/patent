@@ -4,6 +4,7 @@ function initBaseData(base) {
 	}
 	$("#patentCount").html(base.totalCount + "次");
 	$("#seeCount").html(base.seeCount + "次");
+	$("#transCount").html(base.transCount + "次");
 }
 
 function showtishi() {
