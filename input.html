@@ -242,7 +242,7 @@
 						<el-dialog title="备案成功" :visible="dialogFormVisible" @open="openDialog()">
 						  <div >
 						  	<div>温馨提示: 您的专利已经备案成功，专利编号为<span id="patentNo" style="color:red">5414654111</span>,数据写入区块链中需要15秒左右.<br>所以请耐心等待，15秒后刷新查看，下图二维码为您的专利详情页面，可以将次二维码出示给第三方进行展示！
-						  	注意：二维码估计15秒后才能生效！</div>
+						  	注意：二维码估计15秒后才能生效！<span style="color:red">(部分手机浏览器显示不正常，下版本修复)</span></div>
 						 	<div id="showCode" style="margin-top:20px"></div>
 						  </div>
 						  <div slot="footer" class="dialog-footer">
@@ -404,9 +404,6 @@
 			          title: [
 			            { trigger: 'change',required: true, message : "请填写专利标题"}
 			          ],
-			          appDate: [
-			            { trigger: 'change',required: true, message : "请填写申请日期"}
-			          ],
 			          appName: [
 			            { trigger: 'change',required: true, message : "请填写申请人"}
 			          ],
@@ -473,6 +470,10 @@
       },
       methods:{
       	sublim:function(){
+      		if(this.appDate===''){
+      			alert("请填写申请时间");
+      			return;
+      		}
       		this.ruleForm.author = this.curWallet;
       		//转换时间格式
       		this.ruleForm.appDate = getDateStr(new Date(this.appDate));
