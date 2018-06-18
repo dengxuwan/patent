@@ -509,8 +509,11 @@
 			this.patentId = vue.ruleForm.id;
 			var args = [JSON.stringify(vue.ruleForm)];
 			defaultOptions.listener = function(data) {
-
-				vue.dialogFormVisible = true;
+				if (data.txhash) {
+					vue.dialogFormVisible = true;
+				}else{
+					alert('发布专利已被取消!');
+				}
 				// $(".dialog").hide(100)
 				
 			};

@@ -75,7 +75,12 @@ function sendComment() {
         // intervalQuery = setInterval(function () {
         //           funcIntervalQuery();
         //       }, 6000);
-        alert('发表评论成功！写入区块链约15秒!');
+        if (data.txhash) {
+            alert('发表评论成功！写入区块链约15秒!');
+        } else {
+            alert('发表评论操作已经被取消!');
+        }
+
     };
     serialNumber = nebPay.call(config.contractAddr, "0", config.comment, JSON.stringify(args), defaultOptions);
 }

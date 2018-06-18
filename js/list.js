@@ -84,12 +84,17 @@ function toBuy(patentId, amount) {
     }
     var args = [patentId];
     defaultOptions.listener = function(data) {
-        $(".dialog").hide(100);
-        if (confirm('购买成功,大约15秒后数据打包写入区块链，请浏览转让记录进行查看')) {
-            window.location.href = "transfer.html";
+        if (data.txhash) {
+            $(".dialog").hide(100);
+            if (confirm('购买成功,大约15秒后数据打包写入区块链，请浏览转让记录进行查看')) {
+                window.location.href = "transfer.html";
+            } else {
+                window.location.href = "transfer.html";
+            }
         } else {
-            window.location.href = "transfer.html";
+            alert('购买操作已别取消');
         }
+
         //开启定时任务，获取交易状态
         // intervalQuery = setInterval(function() {
         //  funcIntervalQuery();
