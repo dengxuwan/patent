@@ -20,6 +20,9 @@ function getAll(address) {
 
 //初始化列表
 function initListData(list) {
+    $.each(list,function(index,element){
+        element['current'] = curWallet;
+    })
     var respData = {};
     respData.list = list
     var html = template('listScript', respData);
@@ -92,7 +95,7 @@ function toBuy(patentId, amount) {
                 window.location.href = "transfer.html";
             }
         } else {
-            alert('购买操作已别取消');
+            alert('购买操作已被取消');
         }
 
         //开启定时任务，获取交易状态
@@ -101,7 +104,10 @@ function toBuy(patentId, amount) {
         // }, 6000);
 
     };
-    serialNumber = nebPay.call(config.contractAddr, amount + "", config.transfer, JSON.stringify(args), defaultOptions);
+    if(confirm('提示：请先联系作者再进行支付操作！')){
+        serialNumber = nebPay.call(config.contractAddr, amount + "", config.transfer, JSON.stringify(args), defaultOptions);
+    }
+    
 }
 
 
