@@ -56,8 +56,8 @@ function initInfo(info) {
 var serialNumber;
 //发表评论
 function sendComment() {
-    if (!curWallet || curWallet === '') {
-        alert("评论专利必须安装星云钱包插件！");
+    if (!window.webExtensionWallet) {
+        alert('请先安装钱包插件!');
         return;
     }
     var content = $("#commentContent").val();

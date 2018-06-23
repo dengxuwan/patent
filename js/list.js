@@ -1,16 +1,23 @@
 $(function() {
+    //获取搜索参数
+    var keyword = getQueryString('keyword');
+    if (!keyword || keyword === '') {
+        getAll();
+    } else {
+        //说明是搜索
+        $("#keyword").val(keyword);
+        toSearch();
+    }
     getWallectInfo();
+
     $(".loading").show();
 });
 
-function getAll(address) {
-    if (address || address === '') {
-        address = config.myAddress;
-    }
+function getAll() {
     //获取专利列表
-    query(address, config.getAll, "", function(resp) {
+    query(config.myAddress, config.getAll, "", function(resp) {
         console.log(resp, "智能合约获取专利列表");
-        var respArr = JSON.parse(resp.result)
+        var respArr = JSON.parse(resp.result);
         console.log(respArr, "智能合约获取专利列表");
         initBaseData(respArr.base);
         initListData(respArr.list);
@@ -20,7 +27,7 @@ function getAll(address) {
 
 //初始化列表
 function initListData(list) {
-    $.each(list,function(index,element){
+    $.each(list, function(index, element) {
         element['current'] = curWallet;
     })
     var respData = {};
@@ -43,15 +50,6 @@ function getWallectInfo() {
         if (e.data && e.data.data) {
             if (e.data.data.account) {
                 curWallet = e.data.data.account;
-                //获取搜索参数
-                var keyword = getQueryString('keyword');
-                if (!keyword || keyword === '') {
-                    getAll(curWallet);
-                } else {
-                    //说明是搜索
-                    $("#keyword").val(keyword);
-                    toSearch();
-                }
             }
         }
     });
@@ -60,16 +58,13 @@ function getWallectInfo() {
 function toSearch() {
     $(".loading").show();
     var keyword = $("#keyword").val();
-    search(curWallet, keyword);
+    search(keyword);
 }
 
-function search(address, keyword) {
-    if (!address || address === '') {
-        address = config.myAddress;
-    }
+function search(keyword) {
     var args = [keyword];
     //获取专利列表
-    query(address, config.search, JSON.stringify(args), function(resp) {
+    query(config.myAddress, config.search, JSON.stringify(args), function(resp) {
         console.log(resp, "查询列表");
         var respArr = JSON.parse(resp.result)
         console.log(respArr, "查询列表");
@@ -81,8 +76,8 @@ function search(address, keyword) {
 
 //购买
 function toBuy(patentId, amount) {
-    if (curWallet === '') {
-        alert("您必须安装星云钱包插件！");
+    if (!window.webExtensionWallet) {
+        alert('请先安装钱包插件!');
         return;
     }
     var args = [patentId];
@@ -104,10 +99,14 @@ function toBuy(patentId, amount) {
         // }, 6000);
 
     };
-    if(confirm('提示：请先联系作者再进行支付操作！')){
+    if (confirm('提示：请先联系作者进行初步沟通后再进行支付操作！')) {
+        if (!window.webExtensionWallet) {
+            alert('请先安装钱包插件!');
+            return;
+        }
         serialNumber = nebPay.call(config.contractAddr, amount + "", config.transfer, JSON.stringify(args), defaultOptions);
     }
-    
+
 }
 
 

@@ -24,25 +24,9 @@ function initIndex(obj) {
 }
 
 var curWallet;
-//获取钱包地址
-function getWallectInfo() {
-    window.postMessage({
-        "target": "contentscript",
-        "data": {},
-        "method": "getAccount",
-    }, "*");
-    window.addEventListener('message', function(e) {
-        if (e.data && e.data.data) {
-            if (e.data.data.account) {
-                curWallet = e.data.data.account;
-            }
-        }
-    });
-}
 
 $(function() {
     // $(".loading").show();
-    getWallectInfo();
     queryindex();
 })
 

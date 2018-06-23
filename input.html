@@ -76,7 +76,7 @@
 		</div>
 	</div>
 </div><div class="ku_clid" style="width: 100%; height: 60px;"></div>
-    <div id="Contact"> <div class="bannerh">    <div class="banner_a">       <div class="banner_a_top aos-init aos-animate" aos="fade-up"><img src="./file/index3_03.png" data-bd-imgshare-binded="1"><span>星云链专利备案中心</span></div>       <div class="banner_su aos-init aos-animate" aos="fade-up">    
+    <div id="Contact"> <div class="bannerh">    <div class="banner_a">       <div class="banner_a_top aos-init aos-animate" aos="fade-up"><img src="./file/index3_03.png" data-bd-imgshare-binded="1"><span>区块链专利交易平台</span></div>       <div class="banner_su aos-init aos-animate" aos="fade-up">    
     	       <input type="text" name="key" id="keyword" class="yanz" placeholder="请输入您要查询专利号或者专利名称">    
             <input class="cys" value="查询" onclick="toSearch()">              
     	   </div>    
@@ -350,7 +350,6 @@
 		this.getWallectInfo();
       },
       updated:function(){
-		this.getWallectInfo();
       },
       data() {
       	 var validatePass = function(rule, value, callback) {
@@ -505,6 +504,10 @@
 		    });
 		},
 		addPatent:function(){
+		    if (!window.webExtensionWallet) {
+		        alert('请先安装钱包插件!');
+		        return;
+		    }
 			vue.ruleForm.id = new Date().getTime();
 			this.patentId = vue.ruleForm.id;
 			var args = [JSON.stringify(vue.ruleForm)];
