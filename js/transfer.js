@@ -1,14 +1,11 @@
 $(function() {
-    getWallectInfo();
+    getAll();
     $(".loading").show();
 });
 
-function getAll(address) {
-    if (address || address === '') {
-        address = config.myAddress;
-    }
+function getAll() {
     //获取专利列表
-    query(address, config.getTransferList, "", function(resp) {
+    query(config.myAddress, config.getTransferList, "", function(resp) {
         console.log(resp, "智能合约获取专利转让列表");
         var respArr = JSON.parse(resp.result)
         console.log(respArr, "智能合约获取转让列表");
@@ -27,25 +24,6 @@ function initListData(list) {
 }
 
 
-
-var curWallet;
-//获取钱包地址
-function getWallectInfo() {
-    window.postMessage({
-        "target": "contentscript",
-        "data": {},
-        "method": "getAccount",
-    }, "*");
-    window.addEventListener('message', function(e) {
-        if (e.data && e.data.data) {
-            if (e.data.data.account) {
-                curWallet = e.data.data.account;
-                getAll(curWallet);
-            }
-        }
-    });
-}
-
 function toSearch() {
     var keyword = $("#keyword").val();
     window.location.href = "list.html?keyword=" + keyword;
@@ -56,6 +34,6 @@ template.defaults.imports.dateFormat = function(date) {
     return getTimeStr(date);
 };
 
-function toDetail(patentId){
-    window.open("./detail.html?patentId="+patentId); 
+function toDetail(patentId) {
+    window.open("./detail.html?patentId=" + patentId);
 }

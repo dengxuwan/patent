@@ -1,9 +1,6 @@
-function queryInfo(address, patentId) {
-    if (!address || address === '') {
-        address = config.myAddress;
-    }
+function queryInfo(patentId) {
     var args = [patentId];
-    query(address, config.getPatentInfo, JSON.stringify(args), function(resp) {
+    query(config.myAddress, config.getPatentInfo, JSON.stringify(args), function(resp) {
         console.log(resp, "查询详情");
         var respArr = JSON.parse(resp.result)
         console.log(respArr, "查询详情");
@@ -59,8 +56,8 @@ function initInfo(info) {
 var serialNumber;
 //发表评论
 function sendComment() {
-    if (curWallet === '') {
-        alert("评论段子必须安装星云钱包插件！");
+    if (!curWallet || curWallet === '') {
+        alert("评论专利必须安装星云钱包插件！");
         return;
     }
     var content = $("#commentContent").val();
@@ -76,7 +73,7 @@ function sendComment() {
         //           funcIntervalQuery();
         //       }, 6000);
         if (data.txhash) {
-            alert('发表评论成功！写入区块链约15秒!');
+            alert('发表评论成功！数据写入区块链约15秒!请稍候刷新页面进行查看');
         } else {
             alert('发表评论操作已经被取消!');
         }
@@ -97,9 +94,9 @@ function getWallectInfo() {
         if (e.data && e.data.data) {
             if (e.data.data.account) {
                 curWallet = e.data.data.account;
+                $("#curWallet").html(",您的钱包地址:" + curWallet);
             }
         }
-        queryInfo(curWallet, patentId);
     });
 }
 
@@ -111,6 +108,7 @@ var patentId;
         alert('参数不正确!');
         return;
     }
+    queryInfo(patentId);
     getWallectInfo();
 
 

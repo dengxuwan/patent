@@ -252,3 +252,116 @@
 .pinglun-box .pinglunInset{
     flex:1;
 }
+
+@media screen and (min-width:300px) and (max-width:700px) {
+   .top{
+        display: none;
+    }
+    #Contact{
+        display:none;
+    }
+    .pros_a {
+        width: 100%;
+        height: auto;
+        overflow: hidden;
+        margin: 0 auto;
+    }
+    .detail_con {
+        position: relative;
+        width: 100%;
+        margin: auto;
+        /* background: #fafafa; */
+    }
+    .detail_con .detail_tittle {
+        width: 90%;
+        padding-left: 40px;
+        font-size: 14px;
+        color: #2dbd99;
+        border-bottom: 1px solid #2dbd99;
+    }
+    .nav_left{
+        display:none;
+    }
+    .news_nbottom_a {
+        width: 90%;
+        height: auto;
+        text-align: center;
+        margin: 0 auto;
+        padding-top: 50px;
+        font-size: 36px;
+        color: #464646;
+    }
+    .news_nbottom_a p{
+        font-size: 20px
+    }
+    .kdf,.foot,.pinglunBox,.pl-list,.ku_clid{
+        display: none;
+    }
+
+    .detail_con .content .detail_info {
+        width: 100%;
+        border-top: 1px solid #e5e5e5;
+        border-right: 1px solid #e5e5e5;
+        margin-left: 5px;
+        margin-bottom: 30px;
+    }
+    .detail_con .content div {
+        width: 83%;
+        padding: 10px 20px;
+        border: 1px solid #e5e5e5;
+        margin-bottom: 30px;
+        margin-left: 5px;
+        color: #777777;
+        line-height: 30px;
+        text-align: justify;
+        font-size: 14px;
+    }
+    .pinglunBox h2 {
+        font-size: 15px;
+        font-weight: 400;
+        color: #666;
+        margin-top: 0;
+    }
+    .detail_con .content .detail_info li span {
+        width: 63%;
+        margin-top: 0;
+        color: #777777;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+    detail_con .content .detail_info li b {
+        width: 30%;
+        border-right: 1px solid #e5e5e5;
+        text-align: center;
+        text-indent: 0;
+        font-size: 12px;
+        color: #555555;
+    }
+    .detail_con .content .detail_info li {
+        width: 98%;
+        height: 46px;
+        border: 1px solid #e5e5e5;
+        border-top: none;
+    }
+    body {
+         padding-bottom: 0px; 
+    }
+
+    .detail_con h3 {
+        font-weight: normal;
+        font-size: 16px;
+        color: #2dbd99;
+        margin: 8px 20px;
+    }
+    .loadingbox{
+        width: 100px;
+        height: 100px;
+        background: rgba(20,20,20,.8);
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        border-radius: 20px;
+        transform: translateY(-50%) translateX(-50%);
+    }
+}

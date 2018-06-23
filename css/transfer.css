@@ -554,7 +554,7 @@ body{
 	 color: #fff;
 } */
 .perPatent dl{
-	width: 283px;
+	width: 230px;
 	height: 300px;
 	border:1px solid #ccc;
 	margin-right: 20px;
@@ -633,7 +633,6 @@ body{
 }
 .perPatent dl dd p span.advisory{
 	color:#cc0000;
-	float:left;
 	font-size: 15px;
 }
 .perPatent dl dd p i{
@@ -915,4 +914,7 @@ body{
 .buyDetails .centerC .downD li span{
     width: 72px;
     line-height:  30px;
+}
+dd{
+	text-align: center;
 }

@@ -1,6 +1,9 @@
-function queryindex(address) {
-    if (!address || address === '') {
+function queryindex() {
+    var address = "";
+    if (!curWallet || curWallet === '') {
         address = config.myAddress;
+    } else {
+        address = curWallet;
     }
     var args = [true];
     query(address, config.getIndexData, JSON.stringify(args), function(resp) {
@@ -34,13 +37,13 @@ function getWallectInfo() {
                 curWallet = e.data.data.account;
             }
         }
-        queryindex(curWallet);
     });
 }
 
 $(function() {
     // $(".loading").show();
     getWallectInfo();
+    queryindex();
 })
 
 function toSearch() {

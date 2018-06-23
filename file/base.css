@@ -222,11 +222,10 @@ ul, li {list-style-type:none;}
 .select_text {background: url(../images/index99_03.jpg) no-repeat right center;  font-size: 16px;  text-align: left; padding-left:15px;}
 .select_ul li { width: 84px; margin: 0 auto; font-size:15px; border-bottom: 1px solid #dcdfdf; text-align: left; padding-left:15px; }
 .select_ul li:hover { background: #f9f9f9; }
-.banner_bottom { width: 100%; height:104px; margin: 0 auto; background: url(../images/index2_03.png) ; position: absolute; z-index: -1; top:418px;   }
+.banner_bottom { width: 100%; height:104px; margin: 0 auto; position: absolute; z-index: -1; top:418px;   }
 .banner_bottom_a { width: 1200px; height: auto; margin:0 auto; }
 .dh { width: 100%; height: 104px; margin: 0 auto; overflow: hidden; }
 .dh li { width: 300px; float: left; height: 84px; padding-top: 20px; text-align: center;}
-.dh li:hover { background: url(../images/index11_03.png) }
 .dh_left { width: 70px; display: inline-block; position: relative; text-align: center; cursor:pointer;}
 .dh_left .dh_1 { position: absolute; z-index: 9; left: 0; top:45px; }
 .dh_left .dh_2 { position: absolute; z-index: 9; right: 0; top:0px; }
@@ -747,7 +746,7 @@ background:-webkit-gradient(linear, 0% 0%, 100% 0%,from(#63b8fa), to(#2891e2)); 
 .news_right li { width: 93%; height: auto; overflow: hidden; line-height: 20px;margin-bottom:0px; border-bottom:1px solid #f1f1f6;}
 .news_right li:nth-child(4) { margin-bottom: 0; border-bottom: 0; }
 
-.news_hbottom { width: 100%; height:188px; background: url(../images/index35_03.jpg) no-repeat center; }
+.news_hbottom { width: 100%; height:188px; no-repeat center; }
 .news_nbottom_a { width: 1200px; height: auto; text-align: center; margin:0 auto; padding-top: 50px; font-size: 36px; color: #464646; }
 .news_nbottom_a a { width: 132px; height: 37px; background: #e41f2b; font-size: 16px; color: #ffffff; display: block; margin:0 auto; line-height: 37px; margin-top:20px; }
 .news_nbottom_a a:hover { background: #cf131f; }
@@ -1190,7 +1189,7 @@ background:-webkit-gradient(linear, 0% 0%, 100% 0%,from(#63b8fa), to(#2891e2)); 
     flex-direction: row;
 }
 .contentList ul li {
-    width: 360px;
+    width: 28%;
     height: 400px;
     background: #fff;
     border-radius: 4px;
