@@ -211,7 +211,7 @@
 					<el-col :span="12">
 							<div v-if="ruleForm.isTrans">
 							  <el-form-item  label="转让价格" prop="price" :label-width="labelWidth">
-								    <el-input v-model="ruleForm.price" placeholder="单位为Nas"></el-input>
+								    <el-input v-model="ruleForm.price" type="number" placeholder="单位为Nas"></el-input>
 							   </el-form-item>
 							</div>
 					</el-col>
@@ -241,8 +241,9 @@
 						  </div>
 						<el-dialog title="备案成功" :visible="dialogFormVisible" @open="openDialog()">
 						  <div >
-						  	<div>温馨提示: 您的专利已经备案成功，专利编号为<span id="patentNo" style="color:red">5414654111</span>,数据写入区块链中需要15秒左右.<br>所以请耐心等待，15秒后刷新查看，下图二维码为您的专利详情页面，可以将次二维码出示给第三方进行展示！
-						  	注意：二维码估计15秒后才能生效！<span style="color:red">(部分手机浏览器显示不正常，下版本修复)</span></div>
+						  	<div>温馨提示: 您的专利已经备案成功，专利编号为<span id="patentNo" style="color:red">5414654111</span>,数据写入区块链中需要15秒左右.<br>所以请耐心等待，15秒后刷新查看，下图二维码为您的专利详情页面，请保存此二维码，
+						  	<br>	可以将次二维码出示给第三方进行展示！让客户更直接看到你的专利信息！
+						  	<span style="color:red">注意：二维码估计15秒后才能生效！</span></div>
 						 	<div id="showCode" style="margin-top:20px"></div>
 						  </div>
 						  <div slot="footer" class="dialog-footer">
@@ -483,6 +484,7 @@
 	          if (valid) {
 	            this.addPatent();
 	          } else {
+	          	alert('信息校验不成功！');
 	            return false;
 	          }
 	        });
