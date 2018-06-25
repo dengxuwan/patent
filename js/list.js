@@ -84,7 +84,7 @@ function toBuy(patentId, amount) {
     defaultOptions.listener = function(data) {
         if (data.txhash) {
             $(".dialog").hide(100);
-            if (confirm('购买成功,大约15秒后数据打包写入区块链，请浏览转让记录进行查看')) {
+            if (confirm('大约15秒后数据打包写入区块链，请浏览转让记录进行查看是否成功，如果不成功请确保余额充足！')) {
                 window.location.href = "transfer.html";
             } else {
                 window.location.href = "transfer.html";
@@ -92,12 +92,6 @@ function toBuy(patentId, amount) {
         } else {
             alert('购买操作已被取消');
         }
-
-        //开启定时任务，获取交易状态
-        // intervalQuery = setInterval(function() {
-        //  funcIntervalQuery();
-        // }, 6000);
-
     };
     if (confirm('提示：请先联系作者进行初步沟通后再进行支付操作！')) {
         if (!window.webExtensionWallet) {
